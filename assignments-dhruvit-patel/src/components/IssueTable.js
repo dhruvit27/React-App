@@ -1,5 +1,5 @@
 import IssueRow from "./IssueRow";
-const IssueTable = ({ issueList, setEditIssue, setIssueList }) => {
+const EmployeeTable = ({ issueList, setEditIssue, setIssueList }) => {
   const rowStyle = { border: "1px solid silver", padding: 4 };
 
   const issueRows =
@@ -36,4 +36,4 @@ const IssueTable = ({ issueList, setEditIssue, setIssueList }) => {
     </table>
   );
 };
-export default IssueTable;
+export default EmployeeTable;
