@@ -16,8 +16,8 @@ const EmployeeTable = ({ employeeList, setEditEmployee, setEmployeeList }) => {
   // [<EmployeeRow rowStyle={rowStyle} employee={employee} />,
   // <EmployeeRow rowStyle={rowStyle} employee={employee} />]
   return (
-    <div className="container-fluid ">
-    <table className="table table-striped table-hover px-2 py-3 mt-3 ">
+    <div className="container-fluid tableFixHead">
+    <table className="table table-striped table-hover px-2">
       <thead className=" bg-light">
         {employeeList && employeeList.length > 0 ? (
           <tr>

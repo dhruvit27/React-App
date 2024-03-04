@@ -49,7 +49,7 @@ select {
 button {
   background-color: #123461;
   color: #fff;
-  padding: 10px;
+  padding: 10px 25px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -262,7 +262,15 @@ input[type="datetime-local"]::-ms-clear {
   background-color: #123461;
   color: #ffffff;
 }
-table th{
+.tableFixHead{
+  overflow: auto;
+  height: 300px;
+}
+.tableFixHead thead th{
+  position: sticky;
+  top: 0;
+  z-index: 1;
   color: #123461;
   font-size: 16px;
+  background-color: #eee;
 }
