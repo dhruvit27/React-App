@@ -16,9 +16,9 @@ const EmployeeTable = ({ employeeList, setEditEmployee, setEmployeeList }) => {
   // [<EmployeeRow rowStyle={rowStyle} employee={employee} />,
   // <EmployeeRow rowStyle={rowStyle} employee={employee} />]
   return (
-    <div className="container-fluid">
-    <table className="table table-striped table-hover px-2 py-3 mt-3">
-      <thead>
+    <div className="container-fluid ">
+    <table className="table table-striped table-hover px-2 py-3 mt-3 ">
+      <thead className=" bg-light">
         {employeeList && employeeList.length > 0 ? (
           <tr>
             {Object.keys(employeeList[0]).map((title) => {
