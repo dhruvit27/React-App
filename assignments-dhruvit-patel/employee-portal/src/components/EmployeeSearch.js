@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const IssueSearch = ({ handleSearch }) => {
+const EmployeeSearch = ({ handleSearch }) => {
     const [searchText, setSearchText] = useState("");
 
     const handleSubmit = (evt) => {
@@ -20,4 +20,4 @@ const IssueSearch = ({ handleSearch }) => {
     );
 };
 
-export default IssueSearch;
+export default EmployeeSearch;

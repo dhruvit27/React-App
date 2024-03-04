@@ -1,61 +1,46 @@
 import { useState } from "react";
 
-const IssueAdd = ({ setIssueList }) => {
-    const [newIssue, setNewIssue] = useState({
-        FirstName: "",
-        LastName: "",
-        Age: 0,
-        DateOfJoining: new Date(),
-        Title: "",
-        Department: "",
-        EmployeeType:"",
-        CurrentStatus:0
+const EmployeeEdit = ({editEmployee,setEmployeeList,setEditEmployee}) =>{
+ const [newEmployee,setNewEmployee] = useState({
+    Id:editEmployee.Id,
+    FirstName: editEmployee.FirstName,
+    LastName: editEmployee.LastName,
+    Age: editEmployee.Age,
+    DateOfJoining: editEmployee.DateOfJoining,
+    Title: editEmployee.Title,
+    Department: editEmployee.Department,
+    EmployeeType:editEmployee.EmployeeType,
+    CurrentStatus:editEmployee.CurrentStatus
+ });
+ const handleOnSubmit = (evt) => {
+    evt.preventDefault();
+
+    setEmployeeList((currEmployeeList) => {
+        return currEmployeeList.map((employee) => {
+            if (employee.Id === newEmployee.Id) {
+                return newEmployee;
+            } else {
+                return employee;
+            }
+        });
     });
 
-    const handleOnSubmit = (evt) => {
-        evt.preventDefault();
-        setIssueList((currIssueList) => {
-            return [
-                ...currIssueList,
-                {
-                    Id: currIssueList.length + 1,
-                    FirstName: newIssue.FirstName,
-                    LastName : newIssue.LastName,
-                    Age: newIssue.Age,
-                    DateOfJoining: newIssue.DateOfJoining,
-                    Title: newIssue.Title,
-                    Department: newIssue.Department,
-                    EmployeeType: newIssue.EmployeeType,
-                    CurrentStatus:0
-                },
-            ];
-        });
+    setEditEmployee(null);
+};
 
-        setNewIssue({
-            FirstName: "",
-            LastName: "",
-            Age: 0,
-            DateOfJoining: new Date(),
-            Title: "",
-            Department: "",
-            EmployeeType:"",
-            CurrentStatus:0
-        });
-    };
-
-    return (
-        <div>
-            <h3>IssueAdd</h3>
-            <form onSubmit={(e) => handleOnSubmit(e)}>
+return (
+    <div className="edit-wrapper">
+        <h3>EmployeeEdit</h3>
+        <form onSubmit={(e) => handleOnSubmit(e)}>
                 <div>
                     <label>First Name</label>
                     <input
                         type="text"
-                        value={newIssue.FirstName}
+                        value={newEmployee.FirstName}
                         onChange={(e) =>
-                            setNewIssue((currNewIssue) => {
+                            setNewEmployee((currNewEmployee) => {
                                 return {
-                                    ...currNewIssue,
+                                    ...currNewEmployee,
                                     FirstName: e.target.value,
                                 };
                             })
@@ -66,11 +51,11 @@ const IssueAdd = ({ setIssueList }) => {
                     <label>Last Name</label>
                     <input
                         type="text"
-                        value={newIssue.LastName}
+                        value={newEmployee.LastName}
                         onChange={(e) =>
-                            setNewIssue((currNewIssue) => {
+                            setNewEmployee((currNewEmployee) => {
                                 return {
-                                    ...currNewIssue,
+                                    ...currNewEmployee,
                                     LastName: e.target.value,
                                 };
                             })
@@ -81,11 +66,11 @@ const IssueAdd = ({ setIssueList }) => {
                     <label>Age</label>
                     <input
                         type="number"
-                        value={newIssue.Age}
+                        value={newEmployee.Age}
                         onChange={(e) =>
-                            setNewIssue((currNewIssue) => {
+                            setNewEmployee((currNewEmployee) => {
                                 return {
-                                    ...currNewIssue,
+                                    ...currNewEmployee,
                                     Age: e.target.value,
                                 };
                             })
@@ -97,14 +82,14 @@ const IssueAdd = ({ setIssueList }) => {
                     <input
                         type="date"
                         value={
-                            newIssue.DateOfJoining
-                                ? newIssue.DateOfJoining.toISOString().split("T")[0]
+                            newEmployee.DateOfJoining
+                                ? newEmployee.DateOfJoining.toISOString().split("T")[0]
                                 : ""
                         }
                         onChange={(e) =>
-                            setNewIssue((currNewIssue) => {
+                            setNewEmployee((currNewEmployee) => {
                                 return {
-                                    ...currNewIssue,
+                                    ...currNewEmployee,
                                     DateOfJoining: new Date(e.target.value),
                                 };
                             })
@@ -115,11 +100,11 @@ const IssueAdd = ({ setIssueList }) => {
                 <label>Department</label>
                     <input
                         type="text"
-                        value={newIssue.Department}
+                        value={newEmployee.Department}
                         onChange={(e) =>
-                            setNewIssue((currNewIssue) => {
+                            setNewEmployee((currNewEmployee) => {
                                 return {
-                                    ...currNewIssue,
+                                    ...currNewEmployee,
                                     Department: e.target.value,
                                 };
                             })
@@ -130,11 +115,11 @@ const IssueAdd = ({ setIssueList }) => {
                     <label>Title</label>
                     <input
                         type="text"
-                        value={newIssue.Title}
+                        value={newEmployee.Title}
                         onChange={(e) =>
-                            setNewIssue((currNewIssue) => {
+                            setNewEmployee((currNewEmployee) => {
                                 return {
-                                    ...currNewIssue,
+                                    ...currNewEmployee,
                                     Title: e.target.value,
                                 };
                             })
@@ -145,11 +130,11 @@ const IssueAdd = ({ setIssueList }) => {
                     <label>EmployeeType</label>
                     <input
                         type="text"
-                        value={newIssue.EmployeeType}
+                        value={newEmployee.EmployeeType}
                         onChange={(e) =>
-                            setNewIssue((currNewIssue) => {
+                            setNewEmployee((currNewEmployee) => {
                                 return {
-                                    ...currNewIssue,
+                                    ...currNewEmployee,
                                     EmployeeType: e.target.value,
                                 };
                             })
@@ -160,11 +145,11 @@ const IssueAdd = ({ setIssueList }) => {
                     <label>CurrentStatus</label>
                     <input
                         type="number"
-                        value={newIssue.CurrentStatus}
+                        value={newEmployee.CurrentStatus}
                         onChange={(e) =>
-                            setNewIssue((currNewIssue) => {
+                            setNewEmployee((currNewEmployee) => {
                                 return {
-                                    ...currNewIssue,
+                                    ...currNewEmployee,
                                     CurrentStatus: e.target.value,
                                 };
                             })
@@ -173,8 +158,8 @@ const IssueAdd = ({ setIssueList }) => {
                 </div>
                 <button type="submit">Save</button>
             </form>
-        </div>
-    );
+    </div>
+);
 };
 
-export default IssueAdd;
+export default EmployeeEdit;
